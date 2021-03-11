@@ -50,3 +50,44 @@ oneSwiperNext.addEventListener('click', () => {
 // threeSwiperNext.addEventListener('click', () => {
 //     thirdSwiperSlider.slideNext();
 // });
+
+const allServicesBtns = document.querySelectorAll(".services__item");
+
+allServicesBtns.forEach(item => {
+    item.addEventListener("click", function (e) {
+        allServicesBtns.forEach(item => {
+            item.classList.remove("active");
+        });
+        item.classList.add("active");
+    });
+});
+
+var slideout = new Slideout({
+    'panel': document.getElementById('panel'),
+    'menu': document.getElementById('menu'),
+    'padding': 200,
+    'tolerance': 70
+});
+
+// Toggle button
+document.querySelector('.sides-menu__btn-nav').addEventListener('click', function(e) {
+    if (e.target.classList.contains("close")) {
+        e.target.classList.remove("close");
+        document.querySelector(".sides-menu").classList.remove("small");
+    } else {
+        e.target.classList.add("close");
+        document.querySelector(".sides-menu").classList.add("small");
+    }
+
+    slideout.toggle();
+});
+
+const allNavItem = document.querySelectorAll(".nav__item");
+
+allNavItem.forEach(item => {
+    item.addEventListener("click", function () {
+        slideout.close();
+        document.querySelector(".sides-menu__btn-nav").classList.remove("close");
+        document.querySelector(".sides-menu").classList.remove("small");
+    });
+});
