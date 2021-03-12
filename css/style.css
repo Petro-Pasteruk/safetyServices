@@ -117,6 +117,23 @@
   text-decoration: underline;
 }
 
+.sides-menu__btn {
+  border: none;
+  background: none;
+  height: 23px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.sides-menu__btn.close {
+  height: 38px;
+  padding-top: 15px;
+}
+
+.sides-menu__btn:focus {
+  outline: none;
+}
+
 .sides-menu__btn-nav {
   width: 40px;
   height: 5px;
@@ -127,6 +144,7 @@
   cursor: pointer;
   transition: .5s;
   z-index: 2;
+  display: block;
 }
 
 .sides-menu__btn-nav.close {

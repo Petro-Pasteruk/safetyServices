@@ -62,14 +62,18 @@ allServicesBtns.forEach(item => {
     });
 });
 
+const sidesMenuBtn = document.querySelector('.sides-menu__btn');
+
 // Toggle button
-document.querySelector('.sides-menu__btn-nav').addEventListener('click', function(e) {
-    if (e.target.classList.contains("close")) {
-        e.target.classList.remove("close");
+sidesMenuBtn.addEventListener('click', function(e) {
+    if (sidesMenuBtn.classList.contains("close")) {
+        sidesMenuBtn.classList.remove("close");
+        document.querySelector(".sides-menu__btn-nav").classList.remove("close");
         document.querySelector("#menu").classList.remove("active");
         $("body").css("overflow", "inherit");
     } else {
-        e.target.classList.add("close");
+        sidesMenuBtn.classList.add("close");
+        document.querySelector(".sides-menu__btn-nav").classList.add("close");
         document.querySelector("#menu").classList.add("active");
         $("body").css("overflow", "hidden");
     }
