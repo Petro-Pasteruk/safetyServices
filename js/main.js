@@ -102,11 +102,47 @@ $(document).ready(function(){
 });
 
 $("#name").on("input", function (e) {
-    if (e.target.value.trim().length > 2) {
+    const nameReg = /(^[A-Z]{1}[a-z]{1,14} [A-Z]{1}[a-z]{1,14}$)|(^[А-Я]{1}[а-я]{1,14} [А-Я]{1}[а-я]{1,14}$)/;
+
+    if (nameReg.test($("#name").val())) {
         $("#name").css("border-color", "#1071b8");
         e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
     } else {
         $("#name").css("border-color", "red");
         e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
     }
+});
+
+$("#email").on("input", function (e) {
+    const emailReg = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (emailReg.test($("#email").val())) {
+        $("#email").css("border-color", "#1071b8");
+        e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
+    } else {
+        $("#email").css("border-color", "red");
+        e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
+    }
+});
+
+$("#phone").on("input", function (e) {
+    const phoneReg = /^((\+)?[1-9]{1,2})?([-\s\.])?((\(\d{1,4}\))|\d{1,4})(([-\s\.])?[0-9]{1,12}){1,2}$/;
+
+    if (phoneReg.test($("#phone").val())) {
+        $("#phone").css("border-color", "#1071b8");
+        e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
+    } else {
+        $("#phone").css("border-color", "red");
+        e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
+    }
+});
+
+$("#text").on("input", function (e) {
+   if ($("#text").val().trim().length > 5) {
+       $("#text").css("border-color", "#1071b8");
+       e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
+   } else {
+       $("#text").css("border-color", "red");
+       e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
+   }
 });
