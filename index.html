@@ -281,8 +281,11 @@
             <div class="questions__desc">Contact us</div>
             <form action="">
                 <div class="questions__form-block">
-                    <label for="name">Name</label>
-                    <input type="text" id="name">
+                    <div style="position: relative;">
+                        <label for="name">Name</label>
+                        <input type="text" id="name">
+                    </div>
+                    <span class="error-text">Invalid syntax(please enter 2 symbol)</span>
                 </div>
                 <div class="questions__form-block two-input">
                     <div>
@@ -295,8 +298,10 @@
                     </div>
                 </div>
                 <div class="questions__form-block">
-                    <label for="text">Text</label>
-                    <input type="text" id="text">
+                    <div style="position: relative;">
+                        <label for="text">Text</label>
+                        <input type="text" id="text">
+                    </div>
                 </div>
                 <div class="questions__form-block">
                     <label for="message">Message</label>

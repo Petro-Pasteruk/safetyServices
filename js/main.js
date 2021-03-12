@@ -86,8 +86,8 @@ allNavItem.forEach(item => {
 });
 
 $(document).ready(function(){
-    $("#menu").on("click","a", function (event) {
-        event.preventDefault();
+    $("#menu").on("click","a", function (e) {
+        e.preventDefault();
 
         const
             id  = $(this).attr('href'),
@@ -95,4 +95,14 @@ $(document).ready(function(){
 
         $('body,html').animate({scrollTop: top}, 1500);
     });
+});
+
+$("#name").on("input", function (e) {
+    if (e.target.value.trim().length > 2) {
+        $("#name").css("border-color", "#1071b8");
+        e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
+    } else {
+        $("#name").css("border-color", "red");
+        e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
+    }
 });
