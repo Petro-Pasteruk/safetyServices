@@ -534,8 +534,24 @@
   text-transform: uppercase;
   font-size: 20px;
   background: #1071b8;
-  border: none;
   cursor: pointer;
+  border: 1px solid #1071b8;
+  transition: all .3s;
+}
+
+.questions__btn:hover {
+  color: #1071b8;
+  background: #fff;
+}
+
+.questions__btn.disabled {
+  opacity: .7;
+  cursor: no-drop;
+}
+
+.questions__btn.disabled:hover {
+  color: #fff;
+  background: #1071b8;
 }
 /* \Footer */
 
@@ -1090,6 +1106,7 @@
   border: none;
   transform: scale(0.7);
   transition: 0.3s all;
+  cursor: pointer;
 }
 
 .swiper-navigation button:focus {

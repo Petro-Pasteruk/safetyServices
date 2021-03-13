@@ -101,48 +101,46 @@ $(document).ready(function(){
     });
 });
 
-$("#name").on("input", function (e) {
-    const nameReg = /(^[A-Z]{1}[a-z]{1,14} [A-Z]{1}[a-z]{1,14}$)|(^[А-Я]{1}[а-я]{1,14} [А-Я]{1}[а-я]{1,14}$)/;
 
-    if (nameReg.test($("#name").val())) {
-        $("#name").css("border-color", "#1071b8");
-        e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
-    } else {
-        $("#name").css("border-color", "red");
-        e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
-    }
-});
+function inputValidation ($input, regular) {
+    $input.on("input", function (e) {
+        const submitBtn = $(".questions__btn");
 
-$("#email").on("input", function (e) {
-    const emailReg = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (regular.test($input.val())) {
+            $input.css("border-color", "#1071b8");
+            e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
+            submitBtn.disabled = false;
+            submitBtn.removeClass("disabled");
+        } else {
+            $input.css("border-color", "red");
+            e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
+            submitBtn.disabled = true;
+            submitBtn.addClass("disabled");
+        }
+    });
+}
 
-    if (emailReg.test($("#email").val())) {
-        $("#email").css("border-color", "#1071b8");
-        e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
-    } else {
-        $("#email").css("border-color", "red");
-        e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
-    }
-});
+const
+    nameReg = /(^[A-Z]{1}[a-z]{1,14} [A-Z]{1}[a-z]{1,14}$)|(^[А-Я]{1}[а-я]{1,14} [А-Я]{1}[а-я]{1,14}$)/,
+    emailReg = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/,
+    phoneReg = /^((\+)?[1-9]{1,2})?([-\s\.])?((\(\d{1,4}\))|\d{1,4})(([-\s\.])?[0-9]{1,12}){1,2}$/;
 
-$("#phone").on("input", function (e) {
-    const phoneReg = /^((\+)?[1-9]{1,2})?([-\s\.])?((\(\d{1,4}\))|\d{1,4})(([-\s\.])?[0-9]{1,12}){1,2}$/;
-
-    if (phoneReg.test($("#phone").val())) {
-        $("#phone").css("border-color", "#1071b8");
-        e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
-    } else {
-        $("#phone").css("border-color", "red");
-        e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
-    }
-});
+inputValidation($("#name"), nameReg);
+inputValidation($("#email"), emailReg);
+inputValidation($("#phone"), phoneReg);
 
 $("#text").on("input", function (e) {
+    const submitBtn = $(".questions__btn");
+
    if ($("#text").val().trim().length > 5) {
        $("#text").css("border-color", "#1071b8");
        e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
+       submitBtn.disabled = false;
+       submitBtn.removeClass("disabled");
    } else {
        $("#text").css("border-color", "red");
        e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
+       submitBtn.disabled = true;
+       submitBtn.addClass("disabled");
    }
 });
