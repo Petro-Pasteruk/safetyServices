@@ -326,6 +326,10 @@
   right: 0;
 }
 
+.services__slider-wrap.hidden {
+  display: none;
+}
+
 .services__slider-wrap.active {
   display: block;
 }
