@@ -115,6 +115,7 @@
 
 .nav__item:hover {
   text-decoration: underline;
+  color: #fff;
 }
 
 .sides-menu__btn {

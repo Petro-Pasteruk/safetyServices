@@ -44,13 +44,13 @@ $(document).ready(function(){
     addEventSliderArrow(thirdSwiperSlider, threeSwiperPrev, threeSwiperNext);
 
     // Hide sliders
-    const
-        $firstSlider = $(".first-slider"),
-        $secondSlider = $(".second-slider"),
-        $thirdSlider = $(".third-slider");
+    const allSliders = document.querySelectorAll(".services__slider-wrap");
 
-        $secondSlider.addClass("hidden");
-        $thirdSlider.addClass("hidden");
+    allSliders.forEach((item, index) => {
+        if (index !== 0) {
+            item.classList.add("hidden");
+        }
+    });
 
     // Toggle Services tab
     const allServicesBtns = document.querySelectorAll(".services__item");
@@ -60,20 +60,13 @@ $(document).ready(function(){
                 item.classList.remove("active");
             });
             item.classList.add("active");
-
-            if (index === 0) {
-                $firstSlider.removeClass("hidden");
-                $secondSlider.addClass("hidden");
-                $thirdSlider.addClass("hidden");
-            } else if (index === 1) {
-                $firstSlider.addClass("hidden");
-                $secondSlider.removeClass("hidden");
-                $thirdSlider.addClass("hidden");
-            } else if (index === 2) {
-                $firstSlider.addClass("hidden");
-                $secondSlider.addClass("hidden");
-                $thirdSlider.removeClass("hidden");
-            }
+            allSliders.forEach((itemSlider, indexSlider) => {
+                if (index === indexSlider) {
+                    itemSlider.classList.remove("hidden");
+                } else {
+                    itemSlider.classList.add("hidden");
+                }
+            });
         });
     });
 
