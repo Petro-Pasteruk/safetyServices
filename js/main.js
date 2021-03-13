@@ -45,12 +45,12 @@ $(document).ready(function(){
 
     // Hide sliders
     const
-        firstSlider = $(".first-slider"),
-        secondSlider = $(".second-slider"),
-        thirdSlider = $(".third-slider");
+        $firstSlider = $(".first-slider"),
+        $secondSlider = $(".second-slider"),
+        $thirdSlider = $(".third-slider");
 
-        secondSlider.addClass("hidden");
-        thirdSlider.addClass("hidden");
+        $secondSlider.addClass("hidden");
+        $thirdSlider.addClass("hidden");
 
     // Toggle Services tab
     const allServicesBtns = document.querySelectorAll(".services__item");
@@ -62,33 +62,33 @@ $(document).ready(function(){
             item.classList.add("active");
 
             if (index === 0) {
-                firstSlider.removeClass("hidden");
-                secondSlider.addClass("hidden");
-                thirdSlider.addClass("hidden");
+                $firstSlider.removeClass("hidden");
+                $secondSlider.addClass("hidden");
+                $thirdSlider.addClass("hidden");
             } else if (index === 1) {
-                firstSlider.addClass("hidden");
-                secondSlider.removeClass("hidden");
-                thirdSlider.addClass("hidden");
+                $firstSlider.addClass("hidden");
+                $secondSlider.removeClass("hidden");
+                $thirdSlider.addClass("hidden");
             } else if (index === 2) {
-                firstSlider.addClass("hidden");
-                secondSlider.addClass("hidden");
-                thirdSlider.removeClass("hidden");
+                $firstSlider.addClass("hidden");
+                $secondSlider.addClass("hidden");
+                $thirdSlider.removeClass("hidden");
             }
         });
     });
 
     // Open main menu
-    const sidesMenuBtn = document.querySelector('.sides-menu__btn');
-    sidesMenuBtn.addEventListener('click', function(e) {
-        if (sidesMenuBtn.classList.contains("close")) {
-            sidesMenuBtn.classList.remove("close");
-            document.querySelector(".sides-menu__btn-nav").classList.remove("close");
-            document.querySelector("#menu").classList.remove("active");
+    const $sidesMenuBtn = $('.sides-menu__btn');
+    $sidesMenuBtn.on('click', function(e) {
+        if ($(this).hasClass("close")) {
+            $sidesMenuBtn.removeClass("close");
+            $(".sides-menu__btn-nav").removeClass("close");
+            $("#menu").removeClass("active");
             $("body").css("overflow", "inherit");
         } else {
-            sidesMenuBtn.classList.add("close");
-            document.querySelector(".sides-menu__btn-nav").classList.add("close");
-            document.querySelector("#menu").classList.add("active");
+            $sidesMenuBtn.addClass("close");
+            $(".sides-menu__btn-nav").addClass("close");
+            $("#menu").addClass("active");
             $("body").css("overflow", "hidden");
         }
     });
@@ -97,8 +97,9 @@ $(document).ready(function(){
     const allNavItem = document.querySelectorAll(".nav__item");
     allNavItem.forEach(item => {
         item.addEventListener("click", function () {
-            document.querySelector(".sides-menu__btn-nav").classList.remove("close");
-            document.querySelector("#menu").classList.remove("active");
+            $(".sides-menu__btn").removeClass("close");
+            $(".sides-menu__btn-nav").removeClass("close");
+            $("#menu").removeClass("active");
             $("body").css("overflow", "inherit");
         });
     });
@@ -113,46 +114,49 @@ $(document).ready(function(){
     });
 
     // Validation form
-    function inputValidation ($input, regular) {
-        $input.on("input", function (e) {
-            const submitBtn = $(".questions__btn");
-
-            if (regular.test($input.val())) {
-                $input.css("border-color", "#1071b8");
-                e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
-                submitBtn.disabled = false;
-                submitBtn.removeClass("disabled");
-            } else {
-                $input.css("border-color", "red");
-                e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
-                submitBtn.disabled = true;
-                submitBtn.addClass("disabled");
-            }
-        });
-    }
-
     const
         nameReg = /(^[A-Z]{1}[a-z]{1,14} [A-Z]{1}[a-z]{1,14}$)|(^[А-Я]{1}[а-я]{1,14} [А-Я]{1}[а-я]{1,14}$)/,
         emailReg = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/,
         phoneReg = /^((\+)?[1-9]{1,2})?([-\s\.])?((\(\d{1,4}\))|\d{1,4})(([-\s\.])?[0-9]{1,12}){1,2}$/;
+
+    function inputValidation ($input, regular) {
+        $input.on("input", function (e) {
+            const $submitBtn = $(".questions__btn");
+
+            if (regular.test($input.val())) {
+                $input.css("border-color", "#1071b8");
+                e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
+            } else {
+                $input.css("border-color", "red");
+                e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
+                $submitBtn.disabled = true;
+                $submitBtn.addClass("disabled");
+            }
+
+            if (nameReg.test($("#name")) && emailReg.test($("#email")) && phoneReg.test($("#phone"))) {
+                $submitBtn.disabled = false;
+                $submitBtn.removeClass("disabled");
+            }
+        });
+    }
 
     inputValidation($("#name"), nameReg);
     inputValidation($("#email"), emailReg);
     inputValidation($("#phone"), phoneReg);
 
     $("#text").on("input", function (e) {
-        const submitBtn = $(".questions__btn");
+        const $submitBtn = $(".questions__btn");
 
        if ($("#text").val().trim().length > 5) {
            $("#text").css("border-color", "#1071b8");
            e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
-           submitBtn.disabled = false;
-           submitBtn.removeClass("disabled");
+           $submitBtn.disabled = false;
+           $submitBtn.removeClass("disabled");
        } else {
            $("#text").css("border-color", "red");
            e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
-           submitBtn.disabled = true;
-           submitBtn.addClass("disabled");
+           $submitBtn.disabled = true;
+           $submitBtn.addClass("disabled");
        }
     });
 });
