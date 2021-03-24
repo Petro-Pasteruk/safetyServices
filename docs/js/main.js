@@ -20,28 +20,26 @@ $(document).ready(function(){
         },
       };
 
+    // Init sliders, add event switching slides
     const
-        firstSwiperSlider = new Swiper('.first-slider .services__slider', optionSlider),
-        secondSwiperSlider = new Swiper('.second-slider .services__slider', optionSlider),
-        thirdSwiperSlider = new Swiper('.third-slider .services__slider', optionSlider);
+        allSlidersWrap = document.querySelectorAll(".services__slider"),
+        slidersInit = [];
 
-    // Add a slide switching event
-    const
-        oneSwiperPrev = document.getElementById('oneSwiperPrev'),
-        oneSwiperNext = document.getElementById('oneSwiperNext'),
-        twoSwiperPrev = document.getElementById('twoSwiperPrev'),
-        twoSwiperNext = document.getElementById('twoSwiperNext'),
-        threeSwiperPrev = document.getElementById('threeSwiperPrev'),
-        threeSwiperNext = document.getElementById('threeSwiperNext');
+    allSlidersWrap.forEach((item, index) => {
+        item.dataset.id = index + "";
+    });
 
-    function addEventSliderArrow (slider, prevArrow, nextArrow) {
-        prevArrow.addEventListener("click", () => { slider.slidePrev(); });
-        nextArrow.addEventListener("click", () => { slider.slideNext(); });
-    }
+    allSlidersWrap.forEach((item, index) => {
+        slidersInit.push(new Swiper (".services__slider[data-id='" + index + "']", optionSlider));
 
-    addEventSliderArrow(firstSwiperSlider, oneSwiperPrev, oneSwiperNext);
-    addEventSliderArrow(secondSwiperSlider, twoSwiperPrev, twoSwiperNext);
-    addEventSliderArrow(thirdSwiperSlider, threeSwiperPrev, threeSwiperNext);
+        item.parentElement.querySelector(".prevBtn").addEventListener("click", function () {
+            slidersInit[index].slidePrev();
+        });
+
+        item.parentElement.querySelector(".nextBtn").addEventListener("click", function () {
+            slidersInit[index].slideNext();
+        });
+    });
 
     // Hide sliders
     const allSliders = document.querySelectorAll(".services__slider-wrap");
