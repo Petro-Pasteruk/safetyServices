@@ -37,11 +37,11 @@
         <div class="questions">
             <h5 class="questions__heading"><?php the_field('footer_form_title'); ?></h5>
             <div class="questions__desc"><?php the_field('footer_form_sub_title'); ?></div>
-            <form action="">
+            <form action="<?php echo get_template_directory_uri(); ?>/send.php"  id="form" method="POST">
                 <div class="questions__form-block">
                     <div style="position: relative;">
                         <label for="name">Name</label>
-                        <input type="text" id="name">
+                        <input type="text" name="name" id="name">
                     </div>
                     <span class="error-text">Invalid syntax</span>
                 </div>
@@ -49,14 +49,14 @@
                     <div>
                         <div style="position: relative;">
                             <label for="email">Email</label>
-                            <input type="email" id="email">
+                            <input type="email" name="email" id="email">
                         </div>
                         <span class="error-text">Invalid syntax email</span>
                     </div>
                     <div>
                         <div style="position: relative;">
                             <label for="phone">Phone</label>
-                            <input type="text" id="phone" placeholder="000-000-00-00">
+                            <input type="text" id="phone" name="phone" placeholder="000-000-00-00">
                         </div>
                         <span class="error-text">Invalid syntax phone</span>
                     </div>
@@ -64,16 +64,16 @@
                 <div class="questions__form-block">
                     <div style="position: relative;">
                         <label for="text">Text</label>
-                        <input type="text" id="text">
+                        <input type="text" name="text" id="text">
                     </div>
                     <span class="error-text">Invalid syntax text</span>
                 </div>
                 <div class="questions__form-block">
                     <label for="message">Message</label>
-                    <textarea name="" id="message"></textarea>
+                    <textarea name="message" id="message"></textarea>
                 </div>
             </form>
-            <button class="questions__btn disabled" disabled><?php the_field('footer_submit_btn'); ?></button>
+            <button type="submit" form="form" class="questions__btn disabled" disabled><?php the_field('footer_submit_btn'); ?></button>
         </div>
     </div>
 </footer>

@@ -85,188 +85,57 @@ get_header();
                 <div class="content"><?php the_field('fourth_block_content'); ?></div>
                 <div class="services__sliders">
                     <ul class="services__nav">
-                        <li class="services__item active">Title processing</li>
-                        <li class="services__item">Trailer plates</li>
-                        <li class="services__item">Base plates</li>
+                        <?php
+
+                        $services_items = carbon_get_post_meta( get_the_ID(), 'tab');
+                        $slider_arrow = carbon_get_post_meta( get_the_ID(), 'slider_img_arrow');
+                        print_r($slider_arrow);
+                        foreach ($services_items as $services_item) {
+
+                        ?>
+                            <li class="services__item"><?php echo $services_item['tab_title'] ?></li>
+                        <?php
+                        }
+                        ?>
                     </ul>
 
-                    <div class="first-slider services__slider-wrap">
-                        <div class="services__slider">
-                            <div class="swiper-wrapper">
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
+                    <?php
+
+                    $services_items = carbon_get_post_meta( get_the_ID(), 'tab');
+                    foreach ($services_items as $services_item) {
+                    ?>
+                        <div class="services__slider-wrap">
+                            <div class="services__slider">
+                                <div class="swiper-wrapper">
+                                    <?php
+                                    $slides = $services_item['slides_list'];
+                                    foreach ($slides as $slide) {
+                                    ?>
+
+                                    <div class="slide swiper-slide">
+                                        <img src="<?php echo $slide['slide_photo'] ?>" alt="slide img">
+                                        <h5 class="slide__title"><?php echo $slide['slide_title'] ?></h5>
+                                        <div class="slide__content"><?php echo $slide['slide_desc'] ?></div>
+                                    </div>
+
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-navigation">
-                            <button id="oneSwiperPrev">
-                                <img src="img/slider_arrow.png" alt="arrow">
-                            </button>
-                            <button id="oneSwiperNext">
-                                <img src="img/slider_arrow.png" alt="arrow">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="second-slider services__slider-wrap">
-                        <div class="services__slider">
-                            <div class="swiper-wrapper">
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
+                            <div class="swiper-navigation">
+                                <button class="prevBtn">
+                                    <img src="<?php echo $slider_arrow ?>" alt="arrow">
+                                </button>
+                                <button class="nextBtn">
+                                    <img src="<?php echo $slider_arrow ?>" alt="arrow">
+                                </button>
                             </div>
                         </div>
-                        <div class="swiper-navigation">
-                            <button id="twoSwiperPrev">
-                                <img src="img/slider_arrow.png" alt="arrow">
-                            </button>
-                            <button id="twoSwiperNext">
-                                <img src="img/slider_arrow.png" alt="arrow">
-                            </button>
-                        </div>
-                    </div>
-                    <div class="third-slider services__slider-wrap">
-                        <div class="services__slider">
-                            <div class="swiper-wrapper">
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                                <div class="slide swiper-slide">
-                                    <img src="img/slider__plug.png" alt="plug">
-                                    <h5 class="slide__title">IRP Registation (New/text)</h5>
-                                    <div class="slide__content">We can transfer titles of any motorcycle, passenger vehicle, truck, tractor or trailer.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-navigation">
-                            <button id="threeSwiperPrev">
-                                <img src="img/slider_arrow.png" alt="arrow">
-                            </button>
-                            <button id="threeSwiperNext">
-                                <img src="img/slider_arrow.png" alt="arrow">
-                            </button>
-                        </div>
-                    </div>
+
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         </article>

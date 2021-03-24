@@ -1,47 +1,44 @@
 $(document).ready(function(){
-
     // Init Sliders
     const optionSlider = {
         slidesPerView: 1,
         spaceBetween: 30,
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
         breakpoints: {
-          600: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          992: {
-            slidesPerView: 3,
-            spaceBetween: 40,
-          },
+            600: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            992: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+            },
         },
-      };
+    };
 
+    // Init sliders, add event switching slides
     const
-        firstSwiperSlider = new Swiper('.first-slider .services__slider', optionSlider),
-        secondSwiperSlider = new Swiper('.second-slider .services__slider', optionSlider),
-        thirdSwiperSlider = new Swiper('.third-slider .services__slider', optionSlider);
+        allSlidersWrap = document.querySelectorAll(".services__slider"),
+        slidersInit = [];
 
-    // Add a slide switching event
-    const
-        oneSwiperPrev = document.getElementById('oneSwiperPrev'),
-        oneSwiperNext = document.getElementById('oneSwiperNext'),
-        twoSwiperPrev = document.getElementById('twoSwiperPrev'),
-        twoSwiperNext = document.getElementById('twoSwiperNext'),
-        threeSwiperPrev = document.getElementById('threeSwiperPrev'),
-        threeSwiperNext = document.getElementById('threeSwiperNext');
+    allSlidersWrap.forEach((item, index) => {
+        item.dataset.id = index + "";
+    });
 
-    function addEventSliderArrow (slider, prevArrow, nextArrow) {
-        prevArrow.addEventListener("click", () => { slider.slidePrev(); });
-        nextArrow.addEventListener("click", () => { slider.slideNext(); });
-    }
+    allSlidersWrap.forEach((item, index) => {
+        slidersInit.push(new Swiper (".services__slider[data-id='" + index + "']", optionSlider));
 
-    addEventSliderArrow(firstSwiperSlider, oneSwiperPrev, oneSwiperNext);
-    addEventSliderArrow(secondSwiperSlider, twoSwiperPrev, twoSwiperNext);
-    addEventSliderArrow(thirdSwiperSlider, threeSwiperPrev, threeSwiperNext);
+        item.parentElement.querySelector(".prevBtn").addEventListener("click", function () {
+            slidersInit[index].slidePrev();
+        });
+
+        item.parentElement.querySelector(".nextBtn").addEventListener("click", function () {
+            slidersInit[index].slideNext();
+        });
+    });
 
     // Hide sliders
     const allSliders = document.querySelectorAll(".services__slider-wrap");
@@ -51,6 +48,10 @@ $(document).ready(function(){
             item.classList.add("hidden");
         }
     });
+
+
+    // Active services tab
+    document.querySelector(".services__item").classList.add("active");
 
     // Toggle Services tab
     const allServicesBtns = document.querySelectorAll(".services__item");
@@ -140,16 +141,16 @@ $(document).ready(function(){
     $("#text").on("input", function (e) {
         const $submitBtn = $(".questions__btn");
 
-       if ($("#text").val().trim().length > 5) {
-           $("#text").css("border-color", "#1071b8");
-           e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
-           $submitBtn.disabled = false;
-           $submitBtn.removeClass("disabled");
-       } else {
-           $("#text").css("border-color", "red");
-           e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
-           $submitBtn.disabled = true;
-           $submitBtn.addClass("disabled");
-       }
+        if ($("#text").val().trim().length > 5) {
+            $("#text").css("border-color", "#1071b8");
+            e.target.parentElement.parentElement.querySelector(".error-text").classList.remove("active");
+            $submitBtn.disabled = false;
+            $submitBtn.removeClass("disabled");
+        } else {
+            $("#text").css("border-color", "red");
+            e.target.parentElement.parentElement.querySelector(".error-text").classList.add("active");
+            $submitBtn.disabled = true;
+            $submitBtn.addClass("disabled");
+        }
     });
 });
