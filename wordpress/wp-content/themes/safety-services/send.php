@@ -1,25 +1,35 @@
 <?php
 
-$name = $_POST["name"];
-$email = $_POST["email"];
-$phone = $_POST["phone"];
-$text = $_POST["text"];
-$messageForm = $_POST["message"];
+if($_POST['arrayData']) { 
+	    
+	$name = $_POST["name"];
+	$email = $_POST["email"];
+	$phone = $_POST["phone"];
+	$text = $_POST["text"];
+	$messageForm = $_POST["message"];
 
-$message = 'I left an application '.$name.'. ';
-$message .= ''.$email.'- his mail. ';
-$message .= ''.$phone.'-his phone. ';
-$message .= ''.$text.'-his text. ';
-$message .= ''.$messageForm.'-his message. ';
+	$message = 'I left an application '.$name.'. ' . "<br />";
+	$message .= $email.'- his mail. ' . "<br />";
+	$message .= $phone.'-his phone. ' . "<br />";
+	$message .= $text.'-his text. ' . "<br />";
+	$message .= $messageForm.'-his message. ' . "<br />";
 
-$subject = 'Quest Safety Services';
-$to = 'petropasteruk@gmail.com';
-$spectex = '<!DOCTYPE HTML><html><head><title>Quest</title></head><body>';
-$headers = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-if (isset($_POST['send'])) {
-    mail( $to , $subject, $spectex.$message.'</body></html>', $headers );
+   $project_name = "Sefety Services";
+   $admin_email = "example@gmail.com";
+
+    
+function adopt($text) {
+	return '=?UTF-8?B?'.Base64_encode($text).'?=';
 }
+
+$headers = "MIME-Version: 1.0" . PHP_EOL .
+"Content-Type: text/html; charset=utf-8" . PHP_EOL .
+'From: '.adopt($project_name) . '<noreply@yourdomain.com>' . PHP_EOL . 
+'Reply-To: '.$admin_email.'' . PHP_EOL; 
+
+
+mail($admin_email, adopt($project_name), $message, $headers );
+    
 
 ?>
 
