@@ -554,6 +554,7 @@
 .questions__btn:hover {
   color: #1071b8;
   background: #fff;
+  font-weight: 700;
 }
 
 .questions__btn.disabled {
