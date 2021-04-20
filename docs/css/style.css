@@ -45,11 +45,13 @@
   color: #f8ae2b;
   font-size: 22px;
   text-transform: capitalize;
+  line-height: 1;
 }
 
 .title {
   font-size: 52px;
   color: #1071b8;
+  line-height: 1;
 }
 
 .content {
@@ -232,7 +234,7 @@
 }
 
 .welcome .sup-title {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .welcome .title {
@@ -287,13 +289,15 @@
 
 .services .title {
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-weight: 700;
 }
 
 .services__sliders {
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
+  padding-left: 22px;
 }
 
 .services__nav {
@@ -309,6 +313,7 @@
   padding: 10px 15px;
   margin-bottom: 10px;
   transition: all 0.3s;
+  letter-spacing: 3px;
 }
 
 .services__item.active {
@@ -422,7 +427,8 @@
   font-size: 46px;
   color: #f7ad2b;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  line-height: 1;
 }
 
 .contact__desc {
@@ -481,6 +487,7 @@
   font-weight: bold;
   font-size: 30px;
   color: #fff;
+  margin-bottom: 5px;
 }
 
 .questions__desc {
@@ -1253,6 +1260,7 @@
   transform: translateY(-50%);
   left: 30px;
   font-size: 15px;
+  color: #000;
 }
 
 .questions__form-block label[for='message'] {
@@ -1269,6 +1277,7 @@
   border: 1px solid #1071b8;
   font-size: 16px;
   padding-left: 80px;
+  color: #000;
 }
 
 .questions__form-block input:focus,
@@ -1348,6 +1357,12 @@
   }
 }
 
+@media (max-width: 1320px) {
+  .services__slider-wrap {
+    width: 65%;
+  }
+}
+
 @media (max-width: 1200px) {
   .contact__heading {
     font-size: 40px;
@@ -1366,6 +1381,12 @@
   }
   .footer__businesswoman {
     margin-left: -185px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .services__slider-wrap {
+    width: 60%;
   }
 }
 
@@ -1394,6 +1415,9 @@
   }
   .services .container {
     padding-bottom: 125px;
+  }
+  .services__sliders {
+    padding-left: 0;
   }
 }
 
