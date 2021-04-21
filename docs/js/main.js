@@ -150,4 +150,46 @@ $(document).ready(function(){
            $submitBtn.addClass("disabled");
        }
     });
+
+
+    // Adjust the slider to display correctly when adaptive
+    function searchGreatestHeight (arrayBlocks) {
+        let result = 0;
+
+        arrayBlocks.forEach(item => {
+            if (item.offsetHeight > result) {
+                result = item.offsetHeight;
+            }
+        });
+
+        return result;
+    }
+    function setHeight (arrayBlocks) {
+        let height = searchGreatestHeight(arrayBlocks);
+
+        arrayBlocks.forEach(item => {
+            item.style.height = height + "px";
+        });
+    }
+    function resetHeight (arrayBlocks) {
+        arrayBlocks.forEach(item => {
+            item.style.height = "initial";
+        });
+    }
+
+    const
+        allSwiperSlide = document.querySelectorAll(".swiper-slide"),
+        allImgBlockSlide = document.querySelectorAll(".slide__img-block");
+
+    setHeight(allSwiperSlide);
+    setHeight(allImgBlockSlide);
+
+    window.addEventListener(`resize`, () => {
+
+        resetHeight(allSwiperSlide);
+        resetHeight(allImgBlockSlide);
+
+        setHeight(allSwiperSlide);
+        setHeight(allImgBlockSlide);
+    });
 });
