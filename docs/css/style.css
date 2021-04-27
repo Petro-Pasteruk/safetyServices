@@ -1010,10 +1010,10 @@
 }
 
 @media (max-width: 320px) {
-  .slide__content {
-    height: 30px;
-  }
   .site-header {
     display: none;
+  }
+  .slide {
+    height: 420px;
   }
 }
