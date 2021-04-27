@@ -372,12 +372,14 @@
   margin-top: 35px;
   padding-left: 25px;
   width: 101%;
+  max-height: 70px;
+  overflow: hidden;
 }
 
 .slide__content {
   font-size: 17px;
   width: 80%;
-  height: 40px;
+  height: 50px;
   display: block;
   padding-left: 25px;
   margin: 15px 0 35px 0;
@@ -987,6 +989,9 @@
   .slide {
     height: 430px;
   }
+  .nav__item {
+    font-size: 10vw;
+  }
 }
 
 @media (max-width: 380px) {
@@ -1001,5 +1006,14 @@
   }
   .slide {
     height: 370px;
+  }
+}
+
+@media (max-width: 320px) {
+  .slide__content {
+    height: 30px;
+  }
+  .site-header {
+    display: none;
   }
 }

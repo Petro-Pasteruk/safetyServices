@@ -4,7 +4,7 @@ $(document).ready(function () {
         spaceBetween: 30,
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         breakpoints: {
-            600: { slidesPerView: 1, centeredSlides: true },
+            600: { slidesPerView: 1 },
             700: { slidesPerView: 2, spaceBetween: 20 },
             992: { slidesPerView: 2, spaceBetween: 40 },
             1320: { slidesPerView: 3},
@@ -119,4 +119,6 @@ $(document).ready(function () {
             $submitBtn.addClass("disabled");
         }
     });
+
+    $("#phone").mask("+1(999)999-99-99");
 });
