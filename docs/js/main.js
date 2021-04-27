@@ -5,11 +5,11 @@ $(document).ready(function () {
         navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
         breakpoints: {
             600: { slidesPerView: 1, centeredSlides: true },
-            700: {slidesPerView: 2, spaceBetween: 20 },
+            700: { slidesPerView: 2, spaceBetween: 20 },
             992: { slidesPerView: 2, spaceBetween: 40 },
-            1450: {slidesPerView: 3},
-            2480: {slidesPerView: 4},
-            3650: {slidesPerView: 5}},
+            1320: { slidesPerView: 3},
+            2480: { slidesPerView: 4},
+            3650: { slidesPerView: 5}},
     };
     const
         allSlidersWrap = document.querySelectorAll(".services__slider"),

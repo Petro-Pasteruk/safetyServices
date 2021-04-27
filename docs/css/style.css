@@ -625,6 +625,12 @@
   }
 }
 
+@media (max-width: 1900px) {
+  .slide__img-block {
+    height: 280px;
+  }
+}
+
 @media (max-width: 1760px) {
   .intro .container {
     margin-left: 130px;
@@ -661,6 +667,15 @@
   .questions__form-block input::placeholder {
     font-size: 22px;
     transform: translateY(2px);
+  }
+}
+
+@media (max-width: 1500px) {
+  .slide {
+    height: 440px;
+  }
+  .slide__img-block {
+    height: 230px;
   }
 }
 
